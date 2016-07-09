@@ -4,12 +4,13 @@ class PostsController < ApplicationController
   # TOPページ
   def index
     # データをすべて取ってきくる必要がある
-# 　   @posts = Post.all.order(created_at: :desc)
     @q = Post.order(created_at: :desc).ransack(params[:q])
     @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
 
     @new_posts = Post.find_newest_article
     @new_comments = Comment.find_newest_comment
+
+    @tsubuyaki = Post.new
   end
 
   def new
@@ -26,7 +27,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to @post, notice: '投稿に成功しました。'
+      # redirect_to @post, notice: '投稿に成功しました。'
+      redirect_to posts_url
     else
       render 'new'
     end

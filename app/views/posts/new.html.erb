@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>ブログ記事投稿</h1>
+    <h1>呟き投稿</h1>
     <% if @post.errors.any? %>
       <div class="alert alert-danger" role="alert">
         <div id="error_explanation">
@@ -16,11 +16,7 @@
 
     <%= form_for @post do |f| %>
       <div class="form-group">
-        <%= f.label "タイトル" %>
-        <%= f.text_field :title, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "カテゴリ" %>
+        <%= f.label "地区" %>
       <%= f.collection_select(:category_id, Category.all, :id, :title, class: "form-control") %>
 
       </div>
