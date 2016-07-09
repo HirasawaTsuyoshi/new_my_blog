@@ -8,5 +8,5 @@ class Post < ActiveRecord::Base
 
   #入力制限
   validates :category_id, presence: :true
-  validates :body, presence: :true, length: { maximum: 1000}
+  validates :body, presence: :true, length: { maximum: 140}
 end
